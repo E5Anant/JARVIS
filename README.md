@@ -65,7 +65,6 @@ You’ll be prompted for:
 - GEMINI_API_KEY (get one at https://aistudio.google.com/app/apikey)
 - UserName, Age (for personalization)
 - AssistantName (e.g., JARVIS)
-- ELEVENLABS_API_KEY
 
 2) Run
 
@@ -176,7 +175,6 @@ python build_executable.py
 - Google Generative AI (Gemini) for reasoning and vision, image generation (nano banana 🍌)
 - UnisonAI for the agent/tool framework
 - Selenium, DuckDuckGo/Google search, OpenCV, PyAutoGUI and friends
-- ElevenLabs for advanced TTS capabilities and film accurate voices
 - You, for trying it out and giving feedback!
 
 
