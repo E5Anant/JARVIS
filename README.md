@@ -1,184 +1,359 @@
-# JARVIS‑IV
+# **JARVIS-IV — Multimodal Agent Operating System**
 
-A voice‑first, screen‑aware personal AI with a sci‑fi UI, dry wit, and useful tools. It listens, thinks, talks back, sees your screen, automates apps, searches the web, summarizes YouTube, and pops sleek hologram widgets for results.
+## Demo
 
-If you like assistants that are helpful, fast, and just a little sarcastic, welcome home.
+Watch the system in action:
+[https://www.youtube.com/watch?v=UGfL8P9WSMA](https://www.youtube.com/watch?v=UGfL8P9WSMA)
 
+---
 
-## Highlights
+## Overview
 
-- Voice in, voice out: Speech‑to‑Text and Text‑to‑Speech with resilient fallbacks
-- Beautiful Eel web UI: floating “widgets” for text, images, video, and weather
-- Drag & drop files into the chat; they’re sent to the model in‑context
-- Multi‑agent brains (UnisonAI): AI Expert, System Automator, Web Crawler, Vision
-- Vision tool: capture current screen or webcam and ask questions about it
-- System automation: open/close apps, web flows, inputs via a controller
-- Web research: Google and DuckDuckGo with concise, source‑linked results
-- YouTube summarize: fetch transcript and generate a clean summary
-- Nano banana 🍌 powered image generation
-- Pack as an app: PyInstaller build script produces a distributable
+JARVIS-IV is a **real-time multimodal AI system** designed to act as an intelligent execution layer over a computer.
 
+Most AI tools today require structured input, constant prompting, and manual execution.
+JARVIS-IV removes that friction by **understanding intent and taking action**.
 
-## What you can use it for
+It integrates voice, vision, automation, and web intelligence into a unified system that operates continuously—without requiring you to micromanage it.
 
-- Hands‑free Q&A and research with quick on‑screen widgets
-- “Open Notepad, then search for X, then paste results” type automations
-- Summarize a YouTube lecture and drop the notes on your screen
-- “What’s on my screen?” or “what’s that object on my desk?” via screen/camera
-- Rapid prototyping with tool‑calling: image gen, web search, weather, etc.
-- Presentations/assistive overlays with movable, resizable widgets
+It listens. It thinks. It acts.
+And occasionally reminds you that you have too many tabs open.
 
+---
 
-## Under the hood (architecture)
+## Core Capabilities
 
-- UI runtime: Eel (HTML/CSS/JS) in `ui/` with widgets driven by `ui/script.js`
-- App runtime: `main.py` orchestrates STT/TTS, Eel, queues, worker threads
-- Reasoning core: `brain.py` uses Google Generative AI (Gemini) with tool calling
-- Agents & tools: `backend/agents.py`, `backend/func/` (automation, web, etc.)
-- Vision: `backend/vision.py` – capture screen/camera, send to Gemini Vision
-- Widgets from Python: `ui/UI.py` exposes `create_text_widget`, image/video, weather
-- Tool schemas: `tools.py` enumerates callable tools for the model
+### 1. Multimodal Interaction
 
+* Voice input and output (speech-to-text and text-to-speech)
+* Text-based chat interface
+* Screen and camera understanding
 
-## Personality and tone (with sarcasm)
+You can talk, type, or just show it your screen.
+It handles all three. Unlike most humans.
 
-- Personality: concise, confident, a touch of dry sarcasm. Think “I did the thing, also your tabs are chaos.”
-- Sarcasm: tasteful and light by default; it teases, not attacks. No rudeness.
-- Examples:
-  - “Opened Chrome. Again. Because we totally didn’t have enough Chrome already.”
-  - “Sure, I’ll summarize the 2‑hour video you didn’t watch.”
-  - “Your screen has 17 icons fighting for attention. Minimalism is a lifestyle.”
-- Safety: no harmful, hateful, or explicit content. Sarcasm stays PG and professional.
-- Tuning: edit `backend/prompts/base.md` and the prompts under `backend/prompts/` to adjust voice. You can also set a custom assistant display name via `.env`.
+---
 
+### 2. Multi-Agent Architecture
 
-## Quick start (Windows)
+JARVIS-IV is not a single model. It is a coordinated system of agents:
 
-Prereqs: Python 3.10+ (3.12 works great), a mic, internet (for Gemini & TTS), and Chrome for browser automations.
-1) Create your .env
+* **AI Expert** — reasoning and structured responses
+* **System Automator** — executes tasks on your machine
+* **Web Crawler** — performs real-time research
+* **Vision Agent** — interprets screen and camera input
 
-```powershell
+This separation allows better reliability and specialization.
+
+---
+
+### 3. Tool Execution Layer
+
+JARVIS-IV does not stop at generating answers.
+
+It can:
+
+* Open and close applications
+* Perform browser automation
+* Execute workflows
+* Retrieve and process external data
+
+In short: it does the work. You supervise. Or pretend to.
+
+---
+
+### 4. Screen Awareness and Vision
+
+* Captures and analyzes your screen
+* Understands UI and content
+* Answers contextual visual queries
+
+Example:
+
+> “What is this error?”
+> “Why does this UI look broken?”
+
+It sees what you see—minus the frustration.
+
+---
+
+### 5. Web Intelligence
+
+* Real-time web search
+* Source-linked summaries
+* YouTube transcript extraction and summarization
+
+Because reading a 2-hour video was never going to happen anyway.
+
+---
+
+### 6. Interactive UI Layer
+
+* Built using Eel (Python + Web UI bridge)
+* Floating, draggable, resizable widgets
+* Real-time visual outputs
+
+This is not just an interface.
+It is a **visual execution layer**.
+
+---
+
+### 7. File Context Integration
+
+* Drag-and-drop files into the interface
+* Files are used as context for reasoning
+* Enables document-aware interaction
+
+---
+
+## System Architecture
+
+### High-Level Flow
+
+User Input → Interface → Agent Selection → Tool Execution → Response → UI Rendering
+
+---
+
+### Components
+
+* **Frontend:** HTML, CSS, JavaScript (Eel UI)
+* **Backend:** Python orchestration
+* **AI Layer:** LLM with tool-calling
+* **Agents:** Modular task-specific units
+* **Tools:** Automation, search, vision, summarization
+
+---
+
+## Project Structure
+
+```bash
+main.py              # Entry point and orchestration
+brain.py             # AI reasoning + tool execution
+ui/                  # Frontend UI
+ui/UI.py             # Widget generation layer
+backend/agents.py    # Multi-agent system
+backend/vision.py    # Screen + camera processing
+backend/func/        # Tool implementations
+tools.py             # Tool schemas
+setup_env.py         # Environment setup
+build_executable.py  # Build system
+```
+
+---
+
+## Setup and Installation
+
+### Prerequisites
+
+* Python 3.10 or higher
+* Microphone
+* Internet connection
+* Google Chrome (recommended for automation)
+
+---
+
+### Step 1: Clone Repository
+
+```bash
+git clone https://github.com/E5Anant/JARVIS.git
+cd JARVIS
+```
+
+---
+
+### Step 2: Create Environment File
+
+```bash
 python setup_env.py
 ```
 
-You’ll be prompted for:
-- GEMINI_API_KEY (get one at https://aistudio.google.com/app/apikey)
-- UserName, Age (for personalization)
-- AssistantName (e.g., JARVIS)
+You will be prompted for:
 
-2) Run
+* GEMINI_API_KEY
+* UserName
+* Age
+* AssistantName
 
-```powershell
+---
+
+### Step 3: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### Step 4: Run Application
+
+```bash
 python main.py
 ```
 
-The sci‑fi UI opens. Speak when it says “Listening…”, or click the chat bubble and type. Drag & drop files onto the chat bubble to attach them.
+The UI will launch automatically.
 
+If it does not, it is probably judging you. Check logs.
 
-## Using the features
+---
 
-- Voice and text
-  - Talk to it. Or type in the bottom‑right chat bubble and hit Enter.
-  - Results show in the bottom‑left log and as floating widgets.
+## Usage
 
-- Vision
-  - Ask: “What’s on my screen?” or “Summarize the error window”.
-  - The agent can capture your screen or switch to camera mode when needed.
+### Voice Interaction
 
-- Web research
-  - “Research the latest Mixtral updates and show sources.”
-  - Results include titles, blurbs, and URLs; it can also show images.
+Speak commands directly after activation.
 
-- System automation
-  - “Open Notepad.” “Close Spotify.”
-  - If direct open fails, it’ll try the official site or search.
+---
 
-- YouTube summarize
-  - “Summarize https://youtu.be/VIDEOID in 250 words.”
-  - Transcript → summary → optional on‑screen widget.
+### Chat Interaction
 
-- Widgets
-  - Right‑click any widget to close it. Drag by the header. Resize from bottom‑right.
+Use the chat interface for structured queries and file inputs.
 
+---
 
-## Configuration
+### Vision Commands
 
-- .env created by `setup_env.py` (saved in project root):
-  - GEMINI_API_KEY
-  - UserName, Age
-  - AssistantName
-- Optional environment for browser automation (fallbacks exist):
-  - CHROME_INSTANCE_PATH, USER_DATA_DIR, PROFILE_DIRECTORY
-- Logging: console log from `main.py` (threaded init + robust error handling)
+Examples:
 
+* “What is on my screen?”
+* “Summarize this window”
 
-## Toolbelt (selected)
+---
 
-- AI_Expert, System_Automator, Web_Crawler (see `backend/agents.py`)
-- VisionTool (screen/camera → Gemini Vision)
-- WebSearchTool (Google/DDG) → concise, source‑linked text
-- OpenAppTool / CloseAppTool (desktop apps)
-- YTSummarize (pull transcript + Gemini summary)
-- Weather, time, location, and more under `backend/func/`
+### Automation Commands
 
+Examples:
 
-## Build as a standalone app
+* “Open Notepad”
+* “Search for latest AI news”
 
-```powershell
+---
+
+### Web and Media
+
+* Summarize YouTube videos
+* Perform research
+* Display structured results
+
+---
+
+## Error Handling and Troubleshooting
+
+### Microphone Issues
+
+* Check system permissions
+* Verify input device
+* Reinstall audio drivers if necessary
+
+---
+
+### Text-to-Speech Issues
+
+* Requires internet connection
+* Check firewall or proxy settings
+
+---
+
+### UI Not Loading
+
+* Ensure `ui/` folder exists
+* Verify correct path resolution
+* Check logs from `main.py`
+
+---
+
+### Vision Issues
+
+* Ensure OpenCV is installed
+* Verify webcam access
+* Disable restricted screen capture tools
+
+---
+
+### API Errors
+
+* Verify `.env` configuration
+* Ensure API key validity
+
+---
+
+## Key Strengths
+
+### 1. Execution, Not Just Conversation
+
+JARVIS-IV moves beyond chat into **action-oriented AI**.
+
+---
+
+### 2. True Multi-Agent Design
+
+Specialized agents improve reliability and scalability.
+
+---
+
+### 3. Real-Time System Integration
+
+Direct interaction with OS, applications, and workflows.
+
+---
+
+### 4. Multimodal Intelligence
+
+Voice + vision + text + automation in one system.
+
+---
+
+### 5. Extensible Tool Framework
+
+New tools and agents can be added easily.
+
+---
+
+## Build as Executable
+
+```bash
 python build_executable.py
 ```
 
-- Output in `dist/JARVIS-IV/`
-- Includes UI, backend, history, and README
+Output:
 
+```
+dist/JARVIS-IV/
+```
 
-## Troubleshooting
+---
 
-- STT microphone issues
-  - Check mic permissions. If PortAudio/PyAudio errors: reinstall audio drivers.
-- TTS (Edge TTS)
-  - Requires internet. Check firewall/proxy if voice output is silent.
-- Eel UI isn’t loading
-  - Ensure `ui/` exists next to `main.py`. The app logs the resolved UI path.
-- Vision
-  - `opencv-python` needs a working webcam for camera mode. Screen capture uses `pyautogui`; disable “secure screen capture” apps if screenshots are blank.
+## Safety and Privacy
 
+* Runs locally with optional external APIs
+* No data is shared unless explicitly required
+* User maintains control over actions
 
-## File map (orientation)
+---
 
-- `main.py` – entry point; starts Eel, STT/TTS, worker threads, UI loop
-- `brain.py` – Gemini model, tool calling, and execution plumbing
-- `ui/` – `index.html`, `style.css`, `script.js` (widgets, drag‑drop, chat)
-- `ui/UI.py` – Python helpers to create widgets from backend
-- `backend/` – agents, tools, prompts, and vision system
-- `tools.py` – tool schemas exposed to the model
-- `setup_env.py` – interactive .env creator
-- `build_executable.py` – PyInstaller builder
+## Personality
 
+JARVIS-IV is:
 
-## Keep or dial the sarcasm
+* concise
+* efficient
+* slightly sarcastic
 
-- Default tone is crisp with a wink. If your boss is allergic to jokes:
-  - Edit `backend/prompts/base.md` and system prompts to “professional only”.
-  - Change `AssistantName` in `.env` to alter the vibe on the UI.
+It will:
 
+* complete tasks
+* provide insights
+* occasionally comment on your workflow choices
 
-## Privacy & safety
+All sarcasm is controlled, professional, and non-offensive.
+This is an assistant—not a stand-up comedian.
 
-- Local app with optional network calls (Gemini, search, TTS). No secrets are exfiltrated unless you provide them. Only use automations you trust.
-- The assistant avoids harmful/hateful/explicit content. Sarcasm stays respectful.
+---
 
+## Conclusion
 
-## Credits
+JARVIS-IV represents a shift from:
 
-- Eel for the hybrid UI, Edge TTS for fast voices
-- Google Generative AI (Gemini) for reasoning and vision, image generation (nano banana 🍌)
-- UnisonAI for the agent/tool framework
-- Selenium, DuckDuckGo/Google search, OpenCV, PyAutoGUI and friends
-- You, for trying it out and giving feedback!
+**command-based computing → intent-driven execution**
 
-
-––
-Made with a helpful attitude and just enough sarcasm to keep things interesting.
-
-
+It is not just an assistant.
+It is a **system that understands and acts**.
