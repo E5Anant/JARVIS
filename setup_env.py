@@ -34,7 +34,7 @@ def setup_env_variables():
     # Get API key
     print("\nGEMINI API KEY")
     print("You need a Google Gemini API key to use JARVIS-IV.")
-    print("If you don't have one, visit: https://aistudio.google.com/app/apikey")
+    print("If you don't have one, visit: https://aistudio.google.com/app/apikey (It's free to create an API key)")
     env_vars['GEMINI_API_KEY'] = input("Enter your Gemini API key: ").strip()
     
     # Get user information

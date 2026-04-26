@@ -136,7 +136,7 @@ python build_executable.py
 
 - STT microphone issues
   - Check mic permissions. If PortAudio/PyAudio errors: reinstall audio drivers.
-- TTS (Edge TTS) / (ElevenLabs)
+- TTS (Edge TTS)
   - Requires internet. Check firewall/proxy if voice output is silent.
 - Eel UI isn’t loading
   - Ensure `ui/` exists next to `main.py`. The app logs the resolved UI path.
